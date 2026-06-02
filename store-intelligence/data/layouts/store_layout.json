@@ -1,0 +1,122 @@
+{
+  "store_id": "ST1008",
+  "store_name": "Brigade_Bangalore",
+  "timezone": "Asia/Kolkata",
+  "aliases": ["STORE_BLR_002"],
+  "open_hours": {
+    "start": "10:00",
+    "end": "22:00"
+  },
+  "cameras": [
+    {
+      "camera_id": "CAM_ENTRY",
+      "role": "entry",
+      "video_file": "VIDEO 3.mp4",
+      "resolution": { "width": 1920, "height": 1080 },
+      "exclude_from_visitor_metrics": false,
+      "timestamp_anchor": "2026-04-10T20:10:00+05:30",
+      "entry_line": {
+        "p1": [820, 320],
+        "p2": [1280, 480],
+        "inbound_side": "interior"
+      },
+      "zones": [
+        {
+          "zone_id": "ENTRY_THRESHOLD",
+          "sku_zone": "ENTRANCE",
+          "polygon": [[120, 60], [1850, 60], [1850, 620], [120, 620]]
+        },
+        {
+          "zone_id": "FOH_AISLE",
+          "sku_zone": "FOH",
+          "polygon": [[80, 200], [1900, 200], [1900, 1070], [80, 1070]]
+        }
+      ]
+    },
+    {
+      "camera_id": "CAM_SKINCARE",
+      "role": "floor_skincare",
+      "video_file": "VIDEO 1.mp4",
+      "resolution": { "width": 1920, "height": 1080 },
+      "exclude_from_visitor_metrics": false,
+      "timestamp_anchor": "2026-04-10T20:10:41+05:30",
+      "zones": [
+        {
+          "zone_id": "SKIN_TOP_WALL",
+          "sku_zone": "SKINCARE",
+          "polygon": [[80, 120], [1750, 120], [1750, 520], [80, 520]]
+        },
+        {
+          "zone_id": "MAKEUP_STATION",
+          "sku_zone": "MAKEUP_SERVICE",
+          "polygon": [[1500, 520], [1850, 520], [1850, 900], [1500, 900]]
+        },
+        {
+          "zone_id": "FOH_AISLE",
+          "sku_zone": "FOH",
+          "polygon": [[80, 520], [1850, 520], [1850, 1050], [80, 1050]]
+        }
+      ]
+    },
+    {
+      "camera_id": "CAM_MAKEUP",
+      "role": "floor_makeup",
+      "video_file": "VIDEO 2.mp4",
+      "resolution": { "width": 1920, "height": 1080 },
+      "exclude_from_visitor_metrics": false,
+      "timestamp_anchor": "2026-04-10T20:11:05+05:30",
+      "zones": [
+        {
+          "zone_id": "MAKEUP_BOTTOM_WALL",
+          "sku_zone": "MAKEUP",
+          "polygon": [[80, 120], [1750, 120], [1750, 520], [80, 520]]
+        },
+        {
+          "zone_id": "MAKEUP_STATION",
+          "sku_zone": "MAKEUP_SERVICE",
+          "polygon": [[80, 520], [450, 520], [450, 900], [80, 900]]
+        },
+        {
+          "zone_id": "FOH_AISLE",
+          "sku_zone": "FOH",
+          "polygon": [[80, 520], [1850, 520], [1850, 1050], [80, 1050]]
+        }
+      ]
+    },
+    {
+      "camera_id": "CAM_BILLING",
+      "role": "billing",
+      "video_file": "VIDEO 5.mp4",
+      "resolution": { "width": 1920, "height": 1080 },
+      "exclude_from_visitor_metrics": false,
+      "timestamp_anchor": "2026-04-10T20:10:01+05:30",
+      "zones": [
+        {
+          "zone_id": "BILLING_QUEUE",
+          "sku_zone": "QUEUE",
+          "polygon": [[400, 450], [1200, 450], [1200, 950], [400, 950]]
+        },
+        {
+          "zone_id": "BILLING_COUNTER",
+          "sku_zone": "BILLING",
+          "polygon": [[80, 350], [550, 350], [550, 850], [80, 850]]
+        }
+      ]
+    },
+    {
+      "camera_id": "CAM_BACKROOM",
+      "role": "backroom",
+      "video_file": "VIDEO 4.mp4",
+      "resolution": { "width": 1920, "height": 1080 },
+      "exclude_from_visitor_metrics": true,
+      "timestamp_anchor": "2026-04-10T20:10:00+05:30",
+      "zones": [
+        {
+          "zone_id": "BACKROOM",
+          "sku_zone": "STAFF",
+          "polygon": [[0, 0], [1920, 0], [1920, 1080], [0, 1080]]
+        }
+      ]
+    }
+  ]
+}

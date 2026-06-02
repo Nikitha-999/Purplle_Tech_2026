@@ -1,0 +1,17 @@
+services:
+  api:
+    build: .
+    container_name: store-intelligence-api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:////app/var/store_intelligence.db
+      STORE_LAYOUT_PATH: /app/data/layouts/store_layout.json
+      LOG_LEVEL: INFO
+      POS_CSV_PATH: /app/data/transactions/brigade_pos.csv
+    volumes:
+      - sqlite_data:/app/var
+    restart: unless-stopped
+
+volumes:
+  sqlite_data:
