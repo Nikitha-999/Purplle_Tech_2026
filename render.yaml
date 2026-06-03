@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: store-intelligence-backend
+    env: docker
+    region: oregon
+    rootDir: store-intelligence
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        scope: build
+        sync: false
+      - key: STORE_LAYOUT_PATH
+        value: /app/data/layouts/store_layout.json
+      - key: POS_CSV_PATH
+        value: /app/data/transactions/brigade_pos.csv
+      - key: CORS_ORIGINS
+        value: https://store-intelligence-frontend.onrender.com
+      - key: LOG_LEVEL
+        value: INFO
+
+  - type: static_site
+    name: store-intelligence-frontend
+    env: static
+    region: oregon
+    rootDir: store-intelligence/frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    autoDeploy: true
+    envVars:
+      - key: VITE_API_URL
+        scope: build
+        value: https://store-intelligence-backend.onrender.com
+      - key: VITE_STORE_ID
+        scope: build
+        value: ST1008

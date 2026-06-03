@@ -66,6 +66,9 @@ curl -X POST http://localhost:8000/events/ingest \
 
 curl "http://localhost:8000/stores/ST1008/metrics?date=2026-04-10"
 curl "http://localhost:8000/stores/ST1008/funnel?date=2026-04-10"
+
+deploy-frontend "https://purplle-tech-challenge-2026-xi.vercel.app/"
+deploy-backend "https://purplle-tech-2026-1.onrender.com/"
 ```
 
 Use `date=2026-04-10` to align with the bundled POS CSV.
