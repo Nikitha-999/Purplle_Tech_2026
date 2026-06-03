@@ -67,43 +67,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Enable CORS - explicit production + localhost origins, with an env toggle for diagnostics
-import os
-
-settings = get_settings()
-
-# Default origins to allow (includes the two Vercel deployments and local dev)
-default_allowed_origins = [
-    "https://purplle-tech-challenge-2026-xi.vercel.app",
-    "https://purplle-tech-challenge-2026-3-git-main-nikitha-999s-projects.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:3000",
-]
-
-# Diagnostic toggle: set ALLOW_CORS_ALL=1 in the environment to allow all origins
-allow_all = os.getenv("ALLOW_CORS_ALL", "0") == "1"
-if allow_all:
-    allowed_origins = ["*"]
-else:
-    # Prefer explicit CORS_ORIGINS env var if provided, otherwise merge defaults with settings
-    env_origins = os.getenv("CORS_ORIGINS")
-    if env_origins:
-        allowed_origins = [o.strip() for o in env_origins.split(",") if o.strip()]
-    else:
-        settings_list = [origin.strip() for origin in settings.cors_origins.split(",") if origin.strip()]
-        # Merge defaults then settings, preserving order and uniqueness
-        merged = []
-        for o in default_allowed_origins + settings_list:
-            if o not in merged:
-                merged.append(o)
-        allowed_origins = merged
-
-logger.info("CORS allowed_origins=%s", allowed_origins)
-
+# Enable CORS globally for diagnostics while debugging Render deployment issues
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -239,6 +207,11 @@ def root() -> dict[str, str]:
         "health": "/health",
         "docs": "/docs",
     }
+
+
+@app.get("/headers-test", tags=["operations"])
+async def headers_test() -> dict[str, bool]:
+    return {"ok": True}
 
 
 @app.get("/cors-test", tags=["operations"])
