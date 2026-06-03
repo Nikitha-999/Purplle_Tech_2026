@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     pos_csv_path: str = "data/transactions/brigade_pos.csv"
     log_level: str = "INFO"
     stale_feed_minutes: int = 10
+    cors_origins: str = "http://localhost:5173,http://localhost:3000,https://purplle-tech-challenge-2026-3-git-main-nikitha-999s-projects.vercel.app"  # NEW: configurable CORS
 
     @property
     def layout_path(self) -> Path:
